@@ -24,6 +24,13 @@ app.get('/all', (req, res) => {
     .catch((e) => res.send('Erro ao buscar scores'))
 });
 
+app.get('/max', (req, res) => {
+    Score.find().sort({score: -1}).limit(1)
+    .then((scores) => res.send(scores))
+    .catch((e) => res.send('Erro ao buscar scores'))
+});
+
+
 app.listen(3002, () => {
     console.log('Server is running on port 3000');
 });
